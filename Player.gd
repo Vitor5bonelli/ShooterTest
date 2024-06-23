@@ -7,19 +7,21 @@ extends CharacterBody3D
 @onready var raycast = $Head/Camera3D/RayCast3D
 
 # Game values
-const SPEED = 10.0
+var speed
+const WALK_SPEED = 7.5
+const SPRINT_SPEED = 12
+
 const JUMP_VELOCITY = 10.0
 var gravity = 20
 
 # Head bob variables:
-const BOB_FREQ = 2.0
+const BOB_FREQ = 1.5
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
 # Player values
 const SENSITIVITY = 0.005
 var health = 3
-
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -44,6 +46,11 @@ func _unhandled_input(event):
 		if raycast.is_colliding():
 			var hit_player = raycast.get_collider()
 			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
+			
+	if Input.is_action_pressed("sprint"):
+		speed = SPRINT_SPEED
+	else:
+		speed = WALK_SPEED
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -61,8 +68,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
