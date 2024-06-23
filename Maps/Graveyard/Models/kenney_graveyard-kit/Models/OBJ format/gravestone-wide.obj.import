@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bmo8b1yo35mr"
+path="res://.godot/imported/gravestone-wide.obj-717a4c8310107e42bf51a1a6c3ef8612.mesh"
+
+[deps]
+
+files=["res://.godot/imported/gravestone-wide.obj-717a4c8310107e42bf51a1a6c3ef8612.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/gravestone-wide.obj"
+dest_files=["res://.godot/imported/gravestone-wide.obj-717a4c8310107e42bf51a1a6c3ef8612.mesh", "res://.godot/imported/gravestone-wide.obj-717a4c8310107e42bf51a1a6c3ef8612.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

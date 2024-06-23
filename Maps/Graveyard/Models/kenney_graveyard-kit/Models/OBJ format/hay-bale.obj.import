@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnriveswhm120"
+path="res://.godot/imported/hay-bale.obj-85ab1a8c41e72c67007d2c6b57cc3e6b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hay-bale.obj-85ab1a8c41e72c67007d2c6b57cc3e6b.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/hay-bale.obj"
+dest_files=["res://.godot/imported/hay-bale.obj-85ab1a8c41e72c67007d2c6b57cc3e6b.mesh", "res://.godot/imported/hay-bale.obj-85ab1a8c41e72c67007d2c6b57cc3e6b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

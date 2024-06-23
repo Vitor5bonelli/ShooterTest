@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://djopc2k43q5mr"
+path="res://.godot/imported/coffin-old.obj-a309877e575a656435958a8e64e5ca71.mesh"
+
+[deps]
+
+files=["res://.godot/imported/coffin-old.obj-a309877e575a656435958a8e64e5ca71.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/coffin-old.obj"
+dest_files=["res://.godot/imported/coffin-old.obj-a309877e575a656435958a8e64e5ca71.mesh", "res://.godot/imported/coffin-old.obj-a309877e575a656435958a8e64e5ca71.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

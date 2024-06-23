@@ -12,7 +12,6 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
-
 func _on_host_btn_pressed():
 	main_menu.hide()
 	
@@ -23,12 +22,14 @@ func _on_host_btn_pressed():
 	multiplayer.peer_disconnected.connect(remove_player)
 	
 	add_player(multiplayer.get_unique_id())
+	
+	upnp_setup()
 
 
 func _on_join_btn_pressed():
 	main_menu.hide()
 	
-	enet_peer.create_client("localhost", PORT)
+	enet_peer.create_client(addr_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 
 
@@ -45,5 +46,20 @@ func remove_player(peer_id):
 		player.queue_free()
 	
 
+func upnp_setup():
+	var upnp = UPNP.new()
+	var discover_result = upnp.discover()
+	
+	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
+	"UPNP discover FAILED! Error %s" % discover_result)
+	
+	assert(upnp.get_gateway() and upnp.get_gateway().is_valid_gateway(), \
+		"UPNP Invalid Gateway!")
+
+	var map_result = upnp.add_port_mapping(PORT)
+	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
+		"UPNP Port Mapping Failed! Error %s" % map_result)
+	
+	print("Success! Join Address: %s" % upnp.query_external_address())
 
 

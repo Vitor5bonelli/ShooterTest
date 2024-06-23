@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bbyny62mxnqfu"
+path="res://.godot/imported/column-large.obj-9c1a6d705371037bc0a85a7c8b48ef8a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/column-large.obj-9c1a6d705371037bc0a85a7c8b48ef8a.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/column-large.obj"
+dest_files=["res://.godot/imported/column-large.obj-9c1a6d705371037bc0a85a7c8b48ef8a.mesh", "res://.godot/imported/column-large.obj-9c1a6d705371037bc0a85a7c8b48ef8a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

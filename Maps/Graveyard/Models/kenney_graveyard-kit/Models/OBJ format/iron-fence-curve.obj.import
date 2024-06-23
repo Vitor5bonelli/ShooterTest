@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://fprok70fnelo"
+path="res://.godot/imported/iron-fence-curve.obj-577e44e8a98d17f5a0409420bae35d5f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/iron-fence-curve.obj-577e44e8a98d17f5a0409420bae35d5f.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/iron-fence-curve.obj"
+dest_files=["res://.godot/imported/iron-fence-curve.obj-577e44e8a98d17f5a0409420bae35d5f.mesh", "res://.godot/imported/iron-fence-curve.obj-577e44e8a98d17f5a0409420bae35d5f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

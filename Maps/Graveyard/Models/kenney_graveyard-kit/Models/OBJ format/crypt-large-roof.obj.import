@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dm1u2g4lpij33"
+path="res://.godot/imported/crypt-large-roof.obj-cf119611c5674ef6fa5e54afc319bb6d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crypt-large-roof.obj-cf119611c5674ef6fa5e54afc319bb6d.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/crypt-large-roof.obj"
+dest_files=["res://.godot/imported/crypt-large-roof.obj-cf119611c5674ef6fa5e54afc319bb6d.mesh", "res://.godot/imported/crypt-large-roof.obj-cf119611c5674ef6fa5e54afc319bb6d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

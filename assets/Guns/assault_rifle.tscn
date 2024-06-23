@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://bl6qbu70lwcf"]
+
+[ext_resource type="PackedScene" uid="uid://dvgaf4jxespfe" path="res://assets/Guns/gunsblend/AssaultRifle.blend" id="1_0medy"]
+[ext_resource type="Texture2D" uid="uid://2a4k5mmmv3kc" path="res://addons/kenney_particle_pack/rotated/muzzle_05_rotated.png" id="2_c3iu2"]
+
+[sub_resource type="Animation" id="Animation_2sq18"]
+resource_name = "Shoot"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AssaultRifle_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.15, 0, 0), Vector3(0.25, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AssaultRifle_2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0349066, 0, 0), Vector3(-0.0174533, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MuzzleFlash:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(4.35368, 0.584124, 0.0185168), Vector3(4.14416, 0.584124, 0.0185168), Vector3(4.35368, 0.584124, 0.0185168), Vector3(4.43597, 0.584124, 0.0185168), Vector3(4.35368, 0.584124, 0.0185168)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MuzzleFlash:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 2, 2), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iy0hs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AssaultRifle_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.15, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xo1t6"]
+_data = {
+"RESET": SubResource("Animation_iy0hs"),
+"Shoot": SubResource("Animation_2sq18")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v4mdv"]
+flip_faces = true
+size = Vector2(1, 1)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eicuh"]
+transparency = 1
+albedo_color = Color(1, 0.498039, 0.341176, 1)
+albedo_texture = ExtResource("2_c3iu2")
+emission_enabled = true
+emission = Color(1, 0.498039, 0.341176, 1)
+emission_energy_multiplier = 3.0
+emission_texture = ExtResource("2_c3iu2")
+
+[node name="AssaultRifle" instance=ExtResource("1_0medy")]
+
+[node name="AssaultRifle_2" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, -0.15, 0, 0)
+cast_shadow = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_xo1t6")
+}
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-0.0519002, 0, -0.998652, 0, 1, 0, 0.998652, 0, -0.0519002, 4.43597, 0.584124, 0.0185168)
+mesh = SubResource("PlaneMesh_v4mdv")
+surface_material_override/0 = SubResource("StandardMaterial3D_eicuh")

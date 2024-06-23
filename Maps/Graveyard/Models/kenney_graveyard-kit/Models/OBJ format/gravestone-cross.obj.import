@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cxxqoh2nd4fe7"
+path="res://.godot/imported/gravestone-cross.obj-0bfc4a16ae61b76a1e8848e5fff43b9a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/gravestone-cross.obj-0bfc4a16ae61b76a1e8848e5fff43b9a.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/gravestone-cross.obj"
+dest_files=["res://.godot/imported/gravestone-cross.obj-0bfc4a16ae61b76a1e8848e5fff43b9a.mesh", "res://.godot/imported/gravestone-cross.obj-0bfc4a16ae61b76a1e8848e5fff43b9a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

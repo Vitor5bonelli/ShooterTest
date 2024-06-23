@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://154r6xqnwx43"
+path="res://.godot/imported/pillar-obelisk.obj-93ff1c717faa284923339c51a4ee81d1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pillar-obelisk.obj-93ff1c717faa284923339c51a4ee81d1.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/pillar-obelisk.obj"
+dest_files=["res://.godot/imported/pillar-obelisk.obj-93ff1c717faa284923339c51a4ee81d1.mesh", "res://.godot/imported/pillar-obelisk.obj-93ff1c717faa284923339c51a4ee81d1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

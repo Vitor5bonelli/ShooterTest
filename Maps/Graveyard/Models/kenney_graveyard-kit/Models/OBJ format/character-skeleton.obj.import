@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bfc45en83deuq"
+path="res://.godot/imported/character-skeleton.obj-3717c5dee6a94a8ad57863854fea7df1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character-skeleton.obj-3717c5dee6a94a8ad57863854fea7df1.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/character-skeleton.obj"
+dest_files=["res://.godot/imported/character-skeleton.obj-3717c5dee6a94a8ad57863854fea7df1.mesh", "res://.godot/imported/character-skeleton.obj-3717c5dee6a94a8ad57863854fea7df1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

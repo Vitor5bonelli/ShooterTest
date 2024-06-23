@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://y8quvd2ehrd5"
+path="res://.godot/imported/gravestone-flat-open.obj-3538181298a8f0f515837eb66755cac1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/gravestone-flat-open.obj-3538181298a8f0f515837eb66755cac1.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/gravestone-flat-open.obj"
+dest_files=["res://.godot/imported/gravestone-flat-open.obj-3538181298a8f0f515837eb66755cac1.mesh", "res://.godot/imported/gravestone-flat-open.obj-3538181298a8f0f515837eb66755cac1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dqhxerg6vaqv3"
+path="res://.godot/imported/stone-wall.obj-fa4de72644a14c7ff1eee8ec97b9c4b0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stone-wall.obj-fa4de72644a14c7ff1eee8ec97b9c4b0.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/stone-wall.obj"
+dest_files=["res://.godot/imported/stone-wall.obj-fa4de72644a14c7ff1eee8ec97b9c4b0.mesh", "res://.godot/imported/stone-wall.obj-fa4de72644a14c7ff1eee8ec97b9c4b0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

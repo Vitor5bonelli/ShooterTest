@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0sakcr2m3h26"]
+[gd_scene load_steps=19 format=3 uid="uid://c0sakcr2m3h26"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_yjbh8"]
+[ext_resource type="PackedScene" uid="uid://bl6qbu70lwcf" path="res://assets/Guns/assault_rifle.tscn" id="2_2t57i"]
 [ext_resource type="PackedScene" uid="uid://cwx3vm1cevwe3" path="res://assets/peashooter.blend" id="2_qdyk5"]
 [ext_resource type="Texture2D" uid="uid://bjob3fwemqfid" path="res://addons/kenney_particle_pack/star_06.png" id="3_6xiap"]
-[ext_resource type="Texture2D" uid="uid://dnjt3w6q5g18" path="res://addons/kenney_particle_pack/circle_05.png" id="4_3auou"]
+[ext_resource type="Texture2D" uid="uid://ctg3g4t5tkh6s" path="res://addons/kenney_crosshair-pack/PNG/Outline/crosshair159.png" id="5_b05xg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5q66y"]
 
@@ -191,6 +192,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51522, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0313555, 0)
 
+[node name="AssaultRifle" parent="Head/Camera3D" instance=ExtResource("2_2t57i")]
+transform = Transform3D(0.0174391, 0, 0.249391, 0, 0.25, 0, -0.249391, 0, 0.0174391, 0.30177, -0.347593, -0.317326)
+visible = false
+
 [node name="peashooter" parent="Head/Camera3D" instance=ExtResource("2_qdyk5")]
 transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0.525437, -0.236064, -0.527929)
 
@@ -210,9 +215,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.03, 0.03)
+scale = Vector2(0.04, 0.04)
 pivot_offset = Vector2(576, 324)
-texture = ExtResource("4_3auou")
+texture = ExtResource("5_b05xg")
 stretch_mode = 5
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]

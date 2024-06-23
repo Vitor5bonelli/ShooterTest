@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cj7vcpvy805o4"
+path="res://.godot/imported/altar-wood.obj-8780085b65669f6d77cd64a47fbd48b5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/altar-wood.obj-8780085b65669f6d77cd64a47fbd48b5.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/altar-wood.obj"
+dest_files=["res://.godot/imported/altar-wood.obj-8780085b65669f6d77cd64a47fbd48b5.mesh", "res://.godot/imported/altar-wood.obj-8780085b65669f6d77cd64a47fbd48b5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

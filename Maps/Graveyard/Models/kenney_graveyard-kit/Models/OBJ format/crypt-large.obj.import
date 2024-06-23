@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cg4bqsqyv5upx"
+path="res://.godot/imported/crypt-large.obj-4373bb44a0d02bc208be661bb2d7b2ab.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crypt-large.obj-4373bb44a0d02bc208be661bb2d7b2ab.mesh"]
+
+source_file="res://Maps/Graveyard/Models/kenney_graveyard-kit/Models/OBJ format/crypt-large.obj"
+dest_files=["res://.godot/imported/crypt-large.obj-4373bb44a0d02bc208be661bb2d7b2ab.mesh", "res://.godot/imported/crypt-large.obj-4373bb44a0d02bc208be661bb2d7b2ab.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
