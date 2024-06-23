@@ -21,7 +21,7 @@ var t_bob = 0.0
 
 # Player values
 const SENSITIVITY = 0.005
-var health = 3
+var health = 100
 
 #fov variables
 const BASE_FOV = 70.0
@@ -47,7 +47,9 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("shoot") and anim_player.current_animation != "shoot":
 		play_shoot_effects.rpc()
 		
-		
+		if raycast.is_colliding():
+			var hit_player = raycast.get_collider()
+			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -114,11 +116,11 @@ func play_shoot_effects():
 
 @rpc("any_peer")
 func receive_damage():
-	health -= 1
+	health -= 50
 	print("damaged!")
 	
 	if health <= 0:
-		health = 3
+		health = 100
 		position = Vector3.ZERO
 		print("killed!")
 
