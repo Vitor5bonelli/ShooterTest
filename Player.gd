@@ -23,6 +23,10 @@ var t_bob = 0.0
 const SENSITIVITY = 0.005
 var health = 3
 
+#fov variables
+const BASE_FOV = 70.0
+const FOV_CHANGE = 1.2
+
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 
@@ -91,6 +95,11 @@ func _physics_process(delta):
 	#Head Bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
+	
+	#FOV
+	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
+	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 
 	move_and_slide()
 	
