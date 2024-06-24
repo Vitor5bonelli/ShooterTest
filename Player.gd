@@ -2,12 +2,11 @@ extends CharacterBody3D
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-@onready var anim_player = $AnimationPlayer
-@onready var muzzle_flash = $Head/Camera3D/peashooter/MuzzleFlash
 @onready var raycast = $Head/Camera3D/RayCast3D
 @onready var kills_lbl = $Head/Camera3D/Kills
 @onready var deaths_lbl = $Head/Camera3D/Deaths
 @onready var name_3d = $Name
+@onready var run_sfx = $run_sfx
 
 # Game values
 var speed
@@ -46,7 +45,6 @@ func _ready():
 	deaths_lbl.text = str(deaths)
 	
 
-
 func _unhandled_input(event):
 	if not is_multiplayer_authority(): return
 	
@@ -55,12 +53,6 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
 		
-	if Input.is_action_just_pressed("shoot") and anim_player.current_animation != "shoot":
-		play_shoot_effects.rpc()
-		
-		if raycast.is_colliding():
-			var hit_player = raycast.get_collider()
-			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority(), get_multiplayer_authority())
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -68,12 +60,19 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		run_sfx.stop()
 	
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
+		if !run_sfx.is_playing():
+			run_sfx.play()
+			
 	else:
 		speed = WALK_SPEED
-
+		run_sfx.stop()
+	
+	if velocity.x == 0:
+		run_sfx.stop()
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -93,13 +92,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.6)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.6)
-	
-	if anim_player.current_animation == "shooting":
-		pass
-	elif input_dir != Vector2.ZERO and is_on_floor():
-		anim_player.play("move")
-	else:
-		anim_player.play("idle")
 		
 	#Head Bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
@@ -117,13 +109,6 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	return pos
 
-@rpc("call_local")
-func play_shoot_effects():
-	anim_player.stop()
-	anim_player.play("shooting")
-	muzzle_flash.restart()
-	muzzle_flash.emitting = true
-
 @rpc("any_peer")
 func receive_damage(attacker_id):
 	health -= 50
@@ -140,7 +125,3 @@ func killed_enemy(attacker_id):
 	if multiplayer.get_unique_id() == attacker_id:
 		kills += 1
 		kills_lbl.text = str(kills)
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "shooting":
-		anim_player.play("idle")

@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://twl8t333saiw"]
-
-[ext_resource type="PackedScene" uid="uid://b8c7lydvgdpwu" path="res://assets/Guns/gunsblend/SniperRifle.blend" id="1_hvmes"]
-
-[node name="SniperRifle" instance=ExtResource("1_hvmes")]

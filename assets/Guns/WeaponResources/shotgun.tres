@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://bg2rjlidc6uxb"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_Resource.gd" id="1_pkrsj"]
+
+[resource]
+script = ExtResource("1_pkrsj")
+Weapon_Name = "Shotgun"
+Damage = 15
+Pickup_Anim = "ShotgunPickUp"
+Idle_Anim = "ShotgunIdle"
+Move_Anim = "ShotgunMove"
+Shoot_Anim = "ShotgunShoot"
+Switch_Animation = "ShotgunSwitch"
+Auto_Fire = false

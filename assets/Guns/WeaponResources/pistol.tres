@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://wsgnddk4kqpl"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_Resource.gd" id="1_oslu2"]
+
+[resource]
+script = ExtResource("1_oslu2")
+Weapon_Name = "Pistol"
+Damage = 20
+Pickup_Anim = "PistolPickUp"
+Idle_Anim = "PistolIdle"
+Move_Anim = "PistolMove"
+Shoot_Anim = "PistolShoot"
+Switch_Animation = "PistolSwitch"
+Auto_Fire = false

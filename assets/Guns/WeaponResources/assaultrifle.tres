@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://c1gqosn3vuvyk"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_Resource.gd" id="1_isuvh"]
+
+[resource]
+script = ExtResource("1_isuvh")
+Weapon_Name = "Assault Rifle"
+Damage = 20
+Pickup_Anim = "AssaultPickUp"
+Idle_Anim = "AssaultIdle"
+Move_Anim = "AssaultMove"
+Shoot_Anim = "AssaultShoot"
+Switch_Animation = "AssaultSwitch"
+Auto_Fire = true
