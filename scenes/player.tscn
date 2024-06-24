@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c0sakcr2m3h26"]
+[gd_scene load_steps=41 format=3 uid="uid://c0sakcr2m3h26"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_yjbh8"]
 [ext_resource type="PackedScene" uid="uid://bl6qbu70lwcf" path="res://assets/Guns/assault_rifle.tscn" id="2_2t57i"]
@@ -696,16 +696,95 @@ tracks/1/keys = {
 "values": [Vector3(0, 1.5708, 0), Vector3(-1.02082, 1.46602, 0.542911), Vector3(-0.619492, 1.54513, 0.156811), Vector3(0, 1.5708, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ns1o1"]
+resource_name = "PistolIdleMoving"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0.174533, 1.5708, -0.101229)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector3(0.705, 0.98, -0.89), Vector3(0.729732, 0.941818, -0.89)]
+}
+
+[sub_resource type="Animation" id="Animation_wrcuw"]
+resource_name = "PistolMove"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(2, 2, 2, 2),
+"update": 0,
+"values": [Vector3(0.705, 0.98, -0.89), Vector3(0.488542, 1.06895, -0.89), Vector3(0.705, 0.98, -0.89), Vector3(0.928245, 1.12478, -0.89)]
+}
+
+[sub_resource type="Animation" id="Animation_7004c"]
+resource_name = "ShotgunIdle"
+length = 5.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0.52, 1.2, -0.64), Vector3(0.52, 1.17, -0.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, -0.10472)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nfkfv"]
 _data = {
 "AssaultReset": SubResource("Animation_hp3mu"),
 "AssaultRiflePickUp": SubResource("Animation_ilof5"),
 "AssaultRifleShoot": SubResource("Animation_tyr78"),
 "AssaultRifleSwitch": SubResource("Animation_u7prk"),
+"PistolIdle": SubResource("Animation_ns1o1"),
+"PistolMove": SubResource("Animation_wrcuw"),
 "PistolPickUp": SubResource("Animation_vtc04"),
 "PistolShoot": SubResource("Animation_k11er"),
 "PistolSwitch": SubResource("Animation_v01sy"),
 "RESET": SubResource("Animation_mo7g2"),
+"ShotgunIdle": SubResource("Animation_7004c"),
 "ShotgunPickUp": SubResource("Animation_ij2d7"),
 "ShotgunReset": SubResource("Animation_w2s8c"),
 "ShotgunShoot": SubResource("Animation_60lgx"),
