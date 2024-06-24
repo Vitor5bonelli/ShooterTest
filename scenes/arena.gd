@@ -2,7 +2,7 @@ extends Node
 
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var addr_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry
-@onready var spawn_area = $map01/SpawnArea
+@onready var name_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/NameEntry
 
 const Player = preload("res://scenes/player.tscn")
 const PORT = 9999

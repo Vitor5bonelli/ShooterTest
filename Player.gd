@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var raycast = $Head/Camera3D/RayCast3D
 @onready var kills_lbl = $Head/Camera3D/Kills
 @onready var deaths_lbl = $Head/Camera3D/Deaths
+@onready var name_3d = $Name
 
 # Game values
 var speed
@@ -23,6 +24,7 @@ var t_bob = 0.0
 
 # Player values
 const SENSITIVITY = 0.005
+var playerName = "placeholder"
 var health = 100
 var kills = 0
 var deaths = 0
@@ -40,10 +42,11 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
 	
-	kills_lbl.text = "0"
-	deaths_lbl.text = "0"
+	kills_lbl.text = str(kills)
+	deaths_lbl.text = str(deaths)
 	
-	
+
+
 func _unhandled_input(event):
 	if not is_multiplayer_authority(): return
 	
