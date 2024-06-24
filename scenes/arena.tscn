@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cv56s60oxf2em"]
+[gd_scene load_steps=19 format=3 uid="uid://cv56s60oxf2em"]
 
 [ext_resource type="Script" path="res://scenes/arena.gd" id="1_kwd2g"]
 [ext_resource type="PackedScene" uid="uid://ce4mxvum4jg7u" path="res://assets/scene_arena.tscn" id="1_q8lax"]
@@ -44,6 +44,8 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ra51"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_84q0v"]
 
 [node name="Arena" type="Node"]
 script = ExtResource("1_kwd2g")
@@ -122,6 +124,11 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="map01/CSGBox3D6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2ra51")
+
+[node name="SpawnArea" type="MeshInstance3D" parent="map01"]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_84q0v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

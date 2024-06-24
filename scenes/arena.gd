@@ -2,6 +2,7 @@ extends Node
 
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var addr_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry
+@onready var spawn_area = $map01/SpawnArea
 
 const Player = preload("res://scenes/player.tscn")
 const PORT = 9999
@@ -29,7 +30,7 @@ func _on_host_btn_pressed():
 func _on_join_btn_pressed():
 	main_menu.hide()
 	
-	enet_peer.create_client(addr_entry.text, PORT)
+	enet_peer.create_client("177.180.187.165", PORT)
 	multiplayer.multiplayer_peer = enet_peer
 
 
@@ -61,5 +62,3 @@ func upnp_setup():
 		"UPNP Port Mapping Failed! Error %s" % map_result)
 	
 	print("Success! Join Address: %s" % upnp.query_external_address())
-
-

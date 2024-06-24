@@ -5,6 +5,8 @@ extends CharacterBody3D
 @onready var anim_player = $AnimationPlayer
 @onready var muzzle_flash = $Head/Camera3D/peashooter/MuzzleFlash
 @onready var raycast = $Head/Camera3D/RayCast3D
+@onready var kills_lbl = $Head/Camera3D/Kills
+@onready var deaths_lbl = $Head/Camera3D/Deaths
 
 # Game values
 var speed
@@ -22,6 +24,8 @@ var t_bob = 0.0
 # Player values
 const SENSITIVITY = 0.005
 var health = 100
+var kills = 0
+var deaths = 0
 
 #fov variables
 const BASE_FOV = 70.0
@@ -35,7 +39,11 @@ func _ready():
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
-
+	
+	kills_lbl.text = "0"
+	deaths_lbl.text = "0"
+	
+	
 func _unhandled_input(event):
 	if not is_multiplayer_authority(): return
 	
@@ -49,7 +57,7 @@ func _unhandled_input(event):
 		
 		if raycast.is_colliding():
 			var hit_player = raycast.get_collider()
-			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
+			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority(), get_multiplayer_authority())
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -85,7 +93,6 @@ func _physics_process(delta):
 	
 	if anim_player.current_animation == "shooting":
 		pass
-	
 	elif input_dir != Vector2.ZERO and is_on_floor():
 		anim_player.play("move")
 	else:
@@ -115,14 +122,21 @@ func play_shoot_effects():
 	muzzle_flash.emitting = true
 
 @rpc("any_peer")
-func receive_damage():
+func receive_damage(attacker_id):
 	health -= 50
-	print("damaged!")
 	
 	if health <= 0:
 		health = 100
 		position = Vector3.ZERO
-		print("killed!")
+		deaths += 1
+		deaths_lbl.text = str(deaths)
+		killed_enemy.rpc(attacker_id)
+
+@rpc("call_local")
+func killed_enemy(attacker_id):
+	if multiplayer.get_unique_id() == attacker_id:
+		kills += 1
+		kills_lbl.text = str(kills)
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "shooting":
