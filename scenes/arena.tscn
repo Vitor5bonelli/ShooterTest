@@ -162,12 +162,12 @@ layout_mode = 2
 text = "Join"
 
 [node name="NameEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 placeholder_text = "Insert your name here!"
 alignment = 1
 
 [node name="AddressEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 placeholder_text = "Type address to join..."
 alignment = 1

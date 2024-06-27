@@ -1,12 +1,22 @@
 extends CharacterBody3D
 
+@onready var animation_player = $Head/Camera3D/WeaponsManager/FPSRig/AnimationPlayer
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-@onready var raycast = $Head/Camera3D/RayCast3D
+@onready var raycast = $Head/Camera3D/WeaponsManager/FPSRig/RayCast3D
+@onready var aim_ray_end = $Head/Camera3D/WeaponsManager/FPSRig/AimRayEnd
 @onready var kills_lbl = $Head/Camera3D/Kills
 @onready var deaths_lbl = $Head/Camera3D/Deaths
 @onready var name_3d = $Name
 @onready var run_sfx = $run_sfx
+
+@onready var barrel = $Head/Camera3D/WeaponsManager/FPSRig/Pistol/Barrel
+@onready var pistol_shot_1 = $Head/Camera3D/WeaponsManager/FPSRig/Pistol/pistol_shot1
+@onready var pistol_shot_2 = $Head/Camera3D/WeaponsManager/FPSRig/Pistol/pistol_shot2
+@onready var pistol_shot_3 = $Head/Camera3D/WeaponsManager/FPSRig/Pistol/pistol_shot3
+var pistolSounds = [pistol_shot_1, pistol_shot_2, pistol_shot_3]
+
+@onready var hitmarker = $Head/Camera3D/Hitmarker
 
 # Game values
 var speed
@@ -32,6 +42,10 @@ var deaths = 0
 const BASE_FOV = 70.0
 const FOV_CHANGE = 1.2
 
+#trail
+var bulletTrail = load("res://scenes/bullet_trail.tscn")
+var instance
+
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 
@@ -52,7 +66,19 @@ func _unhandled_input(event):
 		rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+	
+	if Input.is_action_just_pressed("shoot") and animation_player.current_animation != "PistolShoot":
 		
+		play_shoot_effects()
+		instance = bulletTrail.instantiate()
+		if raycast.is_colliding():
+			instance.init(barrel.global_position, raycast.get_collision_point())
+			var hit_player = raycast.get_collider()
+			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority(), get_multiplayer_authority())
+			hit_marker_play()
+		else:
+			instance.init(barrel.global_position, aim_ray_end.global_position)
+		get_parent().add_child(instance)
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -93,6 +119,13 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.6)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.6)
 		
+	if animation_player.current_animation == "PistolShoot":
+		pass
+	elif input_dir != Vector2.ZERO and is_on_floor():
+		animation_player.play("PistolMove")
+	else:
+		animation_player.play("PistolIdle")
+	
 	#Head Bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
@@ -101,7 +134,7 @@ func _physics_process(delta):
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
-
+	
 	move_and_slide()
 	
 func _headbob(time) -> Vector3:
@@ -111,7 +144,7 @@ func _headbob(time) -> Vector3:
 
 @rpc("any_peer")
 func receive_damage(attacker_id):
-	health -= 50
+	health -= 25
 	
 	if health <= 0:
 		health = 100
@@ -121,7 +154,19 @@ func receive_damage(attacker_id):
 		killed_enemy.rpc(attacker_id)
 
 @rpc("call_local")
+func play_shoot_effects():
+	animation_player.stop()
+	animation_player.play("PistolShoot")
+	pistol_shot_2.play()
+
+@rpc("call_local")
 func killed_enemy(attacker_id):
 	if multiplayer.get_unique_id() == attacker_id:
 		kills += 1
 		kills_lbl.text = str(kills)
+
+@rpc("call_local")
+func hit_marker_play():
+	hitmarker.visible = true
+	await get_tree().create_timer(0.2).timeout
+	hitmarker.visible = false

@@ -30,7 +30,7 @@ func _on_host_btn_pressed():
 func _on_join_btn_pressed():
 	main_menu.hide()
 	
-	enet_peer.create_client("177.180.187.165", PORT)
+	enet_peer.create_client(addr_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 
 
